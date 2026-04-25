@@ -4,27 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>产品经理职业体验测试</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.animate-fade-in-up {
-  animation: fadeInUp 0.35s ease-out;
-}
-
-@keyframes pulse-soft {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
-}
-.pulse-soft {
-  animation: pulse-soft 2s ease-in-out infinite;
-}
-</style>
+<link rel="stylesheet" href="./tailwind.full.css">
+<link rel="stylesheet" href="./style.css">
 </head>
 <body class="bg-white">
 
@@ -197,7 +178,7 @@ function renderQuestion() {
 
   const questionArea = document.getElementById('question-area');
   questionArea.classList.remove('animate-fade-in-up');
-  void questionArea.offsetWidth; // 触发 reflow
+  void questionArea.offsetWidth;
   questionArea.classList.add('animate-fade-in-up');
 
   document.getElementById('question-text').textContent = `${q.id}. ${q.text}`;
@@ -234,7 +215,6 @@ function selectOption(type) {
 }
 
 function showResult() {
-  // 计算结果
   const count = { A: 0, B: 0, C: 0 };
   answers.forEach(a => count[a]++);
 
@@ -244,7 +224,6 @@ function showResult() {
 
   const r = results[maxType];
 
-  // 渲染结果
   document.getElementById('result-type').textContent = r.type;
   document.getElementById('result-summary').textContent = r.summary;
 
@@ -253,7 +232,6 @@ function showResult() {
     `<p class="text-[15px] text-gray-600 leading-relaxed">${line}</p>`
   ).join('');
 
-  // 优势
   const advColorClass = {
     red: 'bg-red-50 text-red-700 border-red-100 marker:text-red-500',
     blue: 'bg-blue-50 text-blue-700 border-blue-100 marker:text-blue-500',
@@ -289,7 +267,6 @@ function resetQuiz() {
   showPage('home');
 }
 
-// 初始化显示首页
 showPage('home');
 </script>
 </body>
